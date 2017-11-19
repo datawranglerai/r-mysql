@@ -1,4 +1,4 @@
-How to UPDATE a MySQL table
+How to UPDATE a MySQL table from R
 ================
 datawranglerai
 11/19/2017
