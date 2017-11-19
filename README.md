@@ -6,7 +6,7 @@ Currently MySQL functions built into packages like RMySQL and dbplyr allow you t
 
 Here is an example of how it can be used.
 
-```
+```R
 library(dplyr)
 
 # Source scripts
