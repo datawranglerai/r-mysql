@@ -1,0 +1,50 @@
+---
+title: "How to UPDATE a MySQL table"
+author: "datawranglerai"
+date: "11/19/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+suppressMessages(library(dplyr))
+suppressMessages(library(DBI))
+suppressMessages(library(RMySQL))
+
+source('connect_to_mydb.R')
+source('rmysql_update.R')
+
+# Establish connection to a schema, mine is called 'playground'
+con <- connect_to_mydb('playground')
+
+# Have a look at the data already in the database
+mytable <- dbReadTable(con, 'iris')
+head(mytable, 10)
+
+# Make some changes
+new_data <- mytable[1:10, ]
+
+new_data[5, 'SepalLength'] <- 70.2
+new_data[6, 'Species']     <- 'virginica'
+new_data[7, 'SepalWidth']  <- 150.3
+
+new_data
+
+# Run upate query
+rmysql_update(con, new_data, 'iris', verbose = TRUE)
+
+# Check that it worked
+mytable <- dbReadTable(con, 'iris')
+head(mytable, 10)
+
+# Clean up connections
+dbDisconnect(con)
+
+```
+
+
+
+

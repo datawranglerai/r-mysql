@@ -4,15 +4,15 @@ connect_to_mydb <- function(db_name) {
   require(RMySQL)
   
   tryCatch({
-      print(paste('Attempting to connect to', db_name))
+      cat('Attempting to connect to', db_name, '\n')
       con <- dbConnect(drv = RMySQL::MySQL(),
                        user = Sys.getenv('dbusr'),
                        password = Sys.getenv('dbpwd'),
                        host = Sys.getenv('dbhost'),
                        port = 3306L,
                        dbname = db_name)
-      print('Connection successful!')
-  }, error = function(e) print('Failed to establish connection'))
+      cat('Connection successful!\n')
+  }, error = function(e) cat('Failed to establish connection\n'))
   
   con
   

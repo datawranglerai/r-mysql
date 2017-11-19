@@ -30,7 +30,7 @@ rmysql_update <- function(con, x, table, verbose = TRUE) {
                       paste(col_names$Field[-pri], values[-pri], sep = " = '", collapse = "', "), # everything minus primary keys
                       "';")
     
-    if(verbose) cat("Performing query", i, "of", nrow(x), ":\n", myquery, "\n")
+    if(verbose) cat("Performing query", i, "of", nrow(x), ":\n", myquery, "\n\n")
     
     # Send query to database
     dbSendQuery(con, myquery)
