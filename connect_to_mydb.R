@@ -1,4 +1,4 @@
-datawrangler_ai_connect <- function(db_name) {
+connect_to_mydb <- function(db_name) {
 
   require(DBI)
   require(RMySQL)

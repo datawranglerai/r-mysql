@@ -17,6 +17,7 @@ rmysql_update <- function(con, x, table, verbose = TRUE) {
   # For each row of table, update db
   for(i in 1:nrow(x)) {
     
+    # Transform ith row of dataset into character vector
     values <- sapply(x[i, ], as.character)
     
     # Build the INSERT/UPDATE query
@@ -29,7 +30,7 @@ rmysql_update <- function(con, x, table, verbose = TRUE) {
                       paste(col_names$Field[-pri], values[-pri], sep = " = '", collapse = "', "), # everything minus primary keys
                       "';")
     
-    if(verbose) cat("Performing query:\n", myquery, "\n")
+    if(verbose) cat("Performing query", i, "of", nrow(x), ":\n", myquery, "\n")
     
     # Send query to database
     dbSendQuery(con, myquery)
