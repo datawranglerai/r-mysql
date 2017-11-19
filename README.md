@@ -3,9 +3,9 @@ How to UPDATE a MySQL table from R
 datawranglerai
 11/19/2017
 
-Currently, packages for working with MySQL databses from R allow you to insert new data into tables, with the option of either appending or overwriting existing information.
+Currently, packages for working with MySQL databses from R allow you to insert new data into tables, with the option of either appending to or overwriting existing information but not updating existing records with new information.
 
-rmysql_update() provides a way to UPDATE tables existing records with new information if duplicate records are found, identified by the primary key.
+rmysql_update() provides a way to UPDATE existing records in a table with new information if duplicate records are found, identified by the primary key.
 
 The code below demonstrates exactly how to use rmysql_update() function to achieve this.
 
